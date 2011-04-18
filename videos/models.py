@@ -1,11 +1,13 @@
 from django.db import models
 
+from datetime import datetime
+
 # Create your models here.
 
 
 def getVideoDict(entry):
 	try:
-		duration = entry.media.duration.seconds
+		duration = datetime.fromtimestamp(int(entry.media.duration.seconds)).strftime("%M:%S")
 	except:
 		duration = "FAIL"
 	try:
