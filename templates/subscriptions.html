@@ -3,12 +3,12 @@
 {% block content %}
 <p>
 {% for entry in scrfeed %}
-<span class="bibox videotumb-128">
+<a href="/video/{{entry.id}}"><span class="bibox videotumb-128">
 <span class="ibox">
 <img src="{{entry.thumbnail}}" />
 </span>
 <span class="video-time">{{entry.duration}}</span>
-</span>
+</span></a>
 {% endfor %}
 </p>
 {% endblock %}

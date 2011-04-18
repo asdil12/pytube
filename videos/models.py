@@ -40,5 +40,5 @@ def getVideoDict(entry):
 		'player': player,
 		'author': author,
 		'duration': duration,
-		'id':	entry.id.text.split().pop()
+		'id':	entry.id.text.split('/').pop()
 	}
