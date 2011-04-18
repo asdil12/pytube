@@ -27,17 +27,15 @@ def get_subscriptions(request):
 			jobs.append(job_server.submit(gdata.youtube.service.YouTubeService().GetYouTubeUserFeed, (uri, None,), modules=("gdata.youtube", "gdata.youtube.service", )))
 		feed = []
 		for job in jobs:
-			feed.extend(job().entry)
+			for entry in job().entry:
+				feed.append(getVideoDict(entry))
 		job_server.destroy()
 		#for entry in api.GetYouTubeSubscriptionFeed().entry:
 		#	feed.extend(api.GetYouTubeUserFeed(username=entry.username.text).entry)
-		feed.sort(key=lambda x: x.published.text, reverse=True)
-		newfeed = []
-		for entry in feed:
-			newfeed.append(getVideoDict(entry))
+		feed.sort(key=lambda x: x['date'], reverse=True)
 		return render_to_response(
 			"subscriptions.html",
-			{'scrfeed': newfeed},
+			{'scrfeed': feed},
 			context_instance=RequestContext(request)
 		)
 	else:
