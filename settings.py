@@ -78,6 +78,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 		'pytube.context_processors.logged_in',
 		'django.contrib.messages.context_processors.messages',
 		'django.core.context_processors.media',
+		'django.core.context_processors.request',
 )
 
 
@@ -113,4 +114,5 @@ INSTALLED_APPS = (
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+		'pytube',
 )

@@ -1,0 +1,3 @@
+{% load tags %}
+<li class="{% active request "^/$" %}"><a href="/" class="new" title="Home">Home</a></li>
+<li class="{% active request "^/subscriptions.*$" %}"><a href="/subscriptions" class="new" title="Your Subscriptions">Subscriptions</a></li>
