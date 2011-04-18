@@ -1,0 +1,149 @@
+var global_navigation_data = [
+{
+  "id": "downloads",
+  "items": [
+  {
+    "link": _("http://software.opensuse.org/"),
+    "image": "release-stable",
+    "title": _("Latest stable release"),
+    "desc": _("Get the latest stable release of openSUSE")
+  },
+  {
+    "link": _("http://software.opensuse.org/developer/"),
+    "image": "release-devel",
+    "title": _("Latest development release"),
+    "desc": _("Get the latest development release of openSUSE")
+  },
+  {
+    "link": "http://software.opensuse.org/",
+    "image": "packages",
+    "title": _("Search for packages"),
+    "desc": _("Get additional software from openSUSE Build Service")
+  },
+  {
+    "link": _("http://en.opensuse.org/Derivatives"),
+    "image": "derivatives",
+    "title": _("Derivatives"),
+    "desc": _("Get one of the specialized distributions built on openSUSE")
+  }
+  ]
+},
+{
+  "id": "support",
+  "items": [
+  {
+    "link": _("http://en.opensuse.org/Portal:Support"),
+    "image": "help",
+    "title": _("Help"),
+    "desc": _("Go to the Support Portal")
+  },
+  {
+    "link": _("http://doc.opensuse.org"),
+    "image": "development-documentation",
+    "title": _("Documentation"),
+    "desc": _("Read guides and manuals")
+  },
+  {
+    "link": _("http://en.opensuse.org/"),
+    "image": "wiki",
+    "title": _("Wiki"),
+    "desc": _("Read and write articles in our Wiki")
+  },
+  {
+    "link": _("http://opensuse.blip.tv/"),
+    "image": "video",
+    "title": _("Video"),
+    "desc": _("Watch various tutorials, screencasts and recordings from talks and presentations")
+  },
+  {
+    "link": _("http://forums.opensuse.org/"),
+    "image": "forums",
+    "title": _("Forums"),
+    "desc": _("Participate in our forums")
+  },
+  {
+    "link": _("http://en.opensuse.org/openSUSE:Mailing_lists"),
+    "image": "lists",
+    "title": _("Mailing lists"),
+    "desc": _("Subscribe to mailinglists and look into their archives")
+  },
+  {
+    "link": _("http://en.opensuse.org/openSUSE:IRC_list"),
+    "image": "irc",
+    "title": _("IRC channels"),
+    "desc": _("Communicate online using Internet Relay Chat")
+  }
+  ]
+},
+{
+  "id": "community",
+  "items": [
+  {
+    "link": _("http://users.opensuse.org/"),
+    "image": "users",
+    "title": _("Users"),
+    "desc": _("Walk through User Directory")
+  },
+  {
+    "link": _("http://planet.opensuse.org/"),
+    "image": "planet",
+    "title": _("Planet"),
+    "desc": _("See blogposts aggregated into one stream")
+  },
+  {
+    "link": _("http://news.opensuse.org/"),
+    "image": "news",
+    "title": _("News"),
+    "desc": _("Latest announcements from the team")
+  },
+  {
+    "link": _("http://lizards.opensuse.org/"),
+    "image": "lizards",
+    "title": _("Lizards"),
+    "desc": _("Users blog platform")
+  },
+  {
+    "link": _("http://shop.opensuse.org/"),
+    "image": "shop",
+    "title": _("Shop"),
+    "desc": _("openSUSE gear here!")
+  }
+  ]
+},
+{
+  "id": "development",
+  "items":
+  [
+  {
+    "link": _("http://en.opensuse.org/Portal:Development"),
+    "image": "developer",
+    "title": _("Developer documentation"),
+    "desc": _("Centralized developer's documentation")
+  },
+  {
+    "link": _("http://features.opensuse.org/"),
+    "image": "features",
+    "title": _("Features"),
+    "desc": _("Vote and work on upcoming openSUSE features")
+  },
+  {
+    "link": _("http://build.opensuse.org/"),
+    "image": "buildservice",
+    "title": _("Build Service"),
+    "desc": _("Create, build and enhance packages")
+  },
+  {
+    "link": _("http://bugs.opensuse.org/"),
+    "image": "bugs",
+    "title": _("Bugs"),
+    "desc": _("Report bugs using Bugzilla")
+  },
+  {
+    "link": _("http://susestudio.com"),
+    "image": "studio",
+    "title": _("SUSE Studio"),
+    "desc": _("Create your own images using Studio")
+  }
+  ]
+}
+];

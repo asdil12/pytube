@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>
+{% for entry in scrfeed %}
+<img src="{{entry.thumbnail}}" />
+{{ entry.title }}<br />
+{{ entry.author }} -
+{{ entry.date }}
+<br />
+{% endfor %}
+</p>
+{% endblock %}
