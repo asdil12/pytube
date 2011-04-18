@@ -1,0 +1,43 @@
+.videotumb-128 .ibox img {
+	top: -12px;
+	bottom: -12px;
+	width: 128px;
+}
+
+.videotumb-96 .ibox img {
+	top: -9px;
+	bottom: -9px;
+	width: 96;
+}
+
+.videotumb-128 .ibox {
+	width: 128px;
+	height: 72px;
+}
+
+.videotumb-96 .ibox {
+	width: 96px;
+	height: 54px;
+}
+
+.bibox {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #D3D3D3;
+	display: inline-block;
+	-moz-border-radius: 3px 3px 3px 3px;
+	overflow: hidden;
+	padding: 4px;
+	position: relative;
+}
+
+.bibox .ibox {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+.bibox .ibox img {
+	position: absolute;
+	left: 0;
+	display: block;
+}
