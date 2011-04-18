@@ -13,7 +13,7 @@ def getVideoDict(entry):
 	except:
 		description = ""
 	try:
-		thumbnail = entry.media.thumbnail[1].url
+		thumbnail = entry.media.thumbnail[0].url.replace('0.jpg', 'default.jpg', 1)
 	except:
 		thumbnail = "ADD_DEFAULT_VIDEO_ICON_URL"
 	try:

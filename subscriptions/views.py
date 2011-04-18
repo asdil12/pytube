@@ -35,7 +35,7 @@ def get_subscriptions(request):
 		feed.sort(key=lambda x: x['date'], reverse=True)
 		return render_to_response(
 			"subscriptions.html",
-			{'scrfeed': feed},
+			{'scrfeed': feed[:20]},
 			context_instance=RequestContext(request)
 		)
 	else:

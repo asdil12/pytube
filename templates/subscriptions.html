@@ -3,11 +3,11 @@
 {% block content %}
 <p>
 {% for entry in scrfeed %}
+<span class="bibox videotumb-128">
+<span class="ibox">
 <img src="{{entry.thumbnail}}" />
-{{ entry.title }}<br />
-{{ entry.author }} -
-{{ entry.date }}
-<br />
+</span>
+</span>
 {% endfor %}
 </p>
 {% endblock %}
