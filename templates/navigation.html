@@ -1,3 +1,6 @@
 {% load tags %}
-<li class="{% active request "^/$" %}"><a href="/" class="new" title="Home">Home</a></li>
-<li class="{% active request "^/subscriptions.*$" %}"><a href="/subscriptions" class="new" title="Your Subscriptions">Subscriptions</a></li>
+{% spaceless %}
+<li class="{% active request "^/$" %}"><a href="/" class="selected new" title="Home">Home</a></li>
+<li class="{% active request "^/video.*$" %}"><a href="/videos" class="" title="Videos">Video</a></li>{# videos by categorie, player #}
+<li class="{% active request "^/subscriptions.*$" %}"><a href="/subscriptions" class="" title="Your Subscriptions">Subscriptions</a></li>
+{% endspaceless %}

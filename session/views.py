@@ -36,12 +36,12 @@ def process_token(request):
 				return redirect("/")
 		except:
 			clearsession(request.session)
-			messages.success(request, "API Fail!")
-			return HttpResponse('api fail')
+			messages.error(request, "API Fail!")
+			return redirect("/")
 	else:
 		clearsession(request.session)
-		messages.success(request, "No Token given!")
-		return HttpResponse('var fail')
+		messages.error(request, "No Token given!")
+		return redirect("/")
 
 def logout(request):
 	if 'token' in request.session:

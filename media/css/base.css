@@ -195,7 +195,8 @@ h2.box-header, h2.box-header-c, h2.box-subheader{text-indent:15px;font-size:1em;
 .box-subheader{border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
 .box-footer{border-bottom-left-radius:5px;border-bottom-right-radius:5px;-moz-border-radius-bottomleft:5px;-moz-border-radius-bottomright:5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;-khtml-border-bottom-left-radius:5px;-khtml-border-bottom-right-radius:5px;border-top:1px solid #ddd;position:absolute;bottom:0px;left:0;margin-bottom:0!important;}
 .navigation .box-footer{position:relative;margin-bottom:-15px!important;}
-.box-header ul, .box-header-c ul, .box-footer ul{list-style:none inside;padding:0;font-size:0.8em;margin:0 0 0 15px;}
+.box-header ul, .box-footer ul{list-style:none inside;padding:0;font-size:0.8em;margin:0 0 0 15px;}
+.box-header-c ul, .box-footer-c ul{list-style:none inside;padding:0;font-size:0.8em;margin:0 0 0 0;}
 .box-header ul li, .box-footer ul li{float:left;}
 .box-header-c ul li{display: inline-block;}
 .box-header-c{text-align: center;}

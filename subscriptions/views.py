@@ -39,6 +39,7 @@ def get_subscriptions(request):
 			context_instance=RequestContext(request)
 		)
 	else:
+		messages.warning(request, "Login to view your subscriptions!")
 		return redirect("/")
 
 def manage(request):
