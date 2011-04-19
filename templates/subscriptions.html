@@ -3,12 +3,16 @@
 {% block content %}
 <p>
 {% for entry in scrfeed %}
-<a href="/video/{{entry.id}}"><span class="bibox videotumb-128">
-<span class="ibox">
-<img src="{{entry.thumbnail}}" />
-</span>
-<span class="video-time">{{entry.duration}}</span>
-</span></a>
+{% spaceless %}
+<a href="{% url pytube.videos.views.play id=entry.id %}">
+	<span class="bibox videotumb-128">
+		<span class="ibox">
+			<img src="{{entry.thumbnail}}" alt="Loading..." />
+		</span>
+		<span class="video-time">{{entry.duration}}</span>
+	</span>
+</a>
+{% endspaceless %}
 {% endfor %}
 </p>
 {% endblock %}
