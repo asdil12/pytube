@@ -1,9 +1,8 @@
 from django.db import models
-
 from datetime import datetime
-
-# Create your models here.
-
+from xml.utils.iso8601 import parse
+import locale
+locale.setlocale(locale.LC_ALL, "")
 
 def getVideoDict(entry):
 	try:
@@ -30,7 +29,19 @@ def getVideoDict(entry):
 		player = entry.media.player.url
 	except:
 		player = ""
-	
+	try:
+		published = datetime.fromtimestamp(parse(entry.published.text)).strftime("%d.%m.%Y")
+	except:
+		published = ""
+	try:
+		viewed = entry.statistics.view_count,
+	except:
+		viewed = ""
+	try:
+		viewed_form = int(entry.statistics.view_count),
+	except:
+		viewed_form = 0
+
 	return {
 		'title': entry.media.title.text,
 		'date': entry.published.text,
@@ -40,5 +51,8 @@ def getVideoDict(entry):
 		'player': player,
 		'author': author,
 		'duration': duration,
-		'id':	entry.id.text.split('/').pop()
+		'id':	entry.id.text.split('/').pop(),
+		'published': published,
+		'viewed': viewed,
+		'viewed_formated': locale.format('%d', viewed_form, True)
 	}

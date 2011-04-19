@@ -1,9 +1,52 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h3>{{video.title}}</h3>
-<p>
-	{% block player %}
-	{% endblock %}
-</p>
+<div style="text-align: center;">
+	<span style="text-align: left; display: inline-block; width: 640px;">
+		<h3 style="margin: 0 0 0 0; padding: 10px 0 10px 3px;">{{video.title}}</h3>
+	</span>
+	{% block player %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block sidebar %}
+<div class="grid_4 omega box box-shadow row_5">
+	<div class="box-header-c header-tabs" style="margin-bottom: 4px;">
+		<ul>
+			{% spaceless %}
+			<li class="{# selected if subscribed #}">
+				<a href="#" class="selected new" title="Subscribe">Subscribe</a>
+			</li>
+			{% endspaceless %}
+		</ul>
+	</div>
+	<div style="margin-left: 12px;">
+		<div style="display: inline-block; vertical-align: middle;">
+			<img src="{{author.thumbnail}}" width="64" alt="Loading..." />
+		</div>
+		<div style="display: inline-block; vertical-align: middle;">
+			From:<br />
+			Added:<br />
+			Viewed:
+		</div>
+		<div style="display: inline-block; vertical-align: middle;">
+			{{author.name}}<br />
+			{{video.published}}<br />
+			{{video.viewed_formated}}
+		</div>
+	</div>
+	<div style="margin-left: 12px; margin-top: 1em;">
+		Here comes download/embed stuff
+	</div>
+</div>
+<div class="grid_4 omega box box-shadow row_18">
+</div>
+{% endblock %}
+
+{% block submaincontainer %}
+<div class="grid_12 box box-shadow alpha row_5">
+	<p>
+		{{video.description}}
+	</p>
+</div>
 {% endblock %}

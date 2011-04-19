@@ -62,3 +62,19 @@
     position: absolute;
     right: 4px;
 }
+
+.vbox {
+	display: inline-block;
+	margin-top: 10px !important;
+	margin-left: 20px;
+	vertical-align: top;
+}
+
+.sdbox {
+	overflow: hidden;
+	margin-left: 5px;
+	margin-top: -2px;
+	width: 128px;
+	font-size: 90%;
+	line-height: 100%;
+}
