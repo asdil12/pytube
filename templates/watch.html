@@ -3,9 +3,9 @@
 
 {% block content %}
 <div style="text-align: center;">
-	<span style="text-align: left; display: inline-block; width: 640px;">
+	<div style="text-align: left; display: inline-block; width: 640px;">
 		<h3 style="margin: 0 0 0 0; padding: 10px 0 10px 3px;">{{video.title}}</h3>
-	</span>
+	</div>
 	{% block player %}{% endblock %}
 </div>
 {% endblock %}
@@ -15,8 +15,8 @@
 	<div class="box-header-c header-tabs" style="margin-bottom: 4px;">
 		<ul>
 			{% spaceless %}
-			<li class="{# selected if subscribed #}">
-				<a href="#" class="selected new" title="Subscribe">Subscribe</a>
+			<li class="{# selected if subscribed #}" id="subscribe">
+				<a href="#" class="selected new" title="Subscribe" onClick="document.getElementById('subscribe').className = 'selected';">Subscribe</a>
 			</li>
 			{% endspaceless %}
 		</ul>
@@ -25,13 +25,13 @@
 		<div style="display: inline-block; vertical-align: middle;">
 			<img src="{{author.thumbnail}}" width="64" alt="Loading..." />
 		</div>
-		<div style="display: inline-block; vertical-align: middle;">
-			From:<br />
-			Added:<br />
-			Viewed:
+		<div style="display: inline-block; vertical-align: middle; padding: 0 2px; text-align: center;">
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/person.gif" alt="From" /><br />
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/calendar.gif" alt="Added" /><br />
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/bar-graph.gif" alt="Viewed" />
 		</div>
 		<div style="display: inline-block; vertical-align: middle;">
-			{{author.name}}<br />
+			{% limits author.name 17 %}<br />
 			{{video.published}}<br />
 			{{video.viewed_formated}}
 		</div>
@@ -56,10 +56,12 @@
 			</span>
 		</div>
 		<div class="rlbox-right">
+			<div style="padding-right: 2px;">
 				<a href="{% url pytube.videos.views.play id=entry.id %}" title="{{entry.title}}">
-					{% trunk entry.title 25 %}
+					{% trunk entry.title 26 %}
 				</a><br />
-				<em>{% limits entry.author 15 %}</em>
+				<em title="{{entry.author}}">{% limits entry.author 15 %}</em>
+			</div>
 		</div>
 		{% endspaceless %}
 		{% endfor %}
@@ -68,6 +70,6 @@
 
 {% block submaincontainer %}
 <div class="grid_12 box box-shadow alpha row_5">
-	<p style="white-space: pre; font-size: 90%;">{{video.description}}</p>
+	<p style="white-space: pre; font-size: 92%; line-height: 130%; margin-top: 0;">{% wrap video.description 120 %}</p>
 </div>
 {% endblock %}
