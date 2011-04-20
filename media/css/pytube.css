@@ -78,3 +78,19 @@
 	font-size: 90%;
 	line-height: 100%;
 }
+
+.rlbox-left {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 8px;
+	margin-bottom: 4px;
+}
+
+.rlbox-right {
+	display: inline-block;
+	vertical-align: middle;
+	width: 100px;
+	margin-left: 5px;
+	font-size: 88%;
+	margin-bottom: 4px;
+}

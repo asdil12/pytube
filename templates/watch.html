@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load tags %}
 
 {% block content %}
 <div style="text-align: center;">
@@ -40,13 +41,33 @@
 	</div>
 </div>
 <div class="grid_4 omega box box-shadow row_18">
+	<div class="box-header aligncenter">Related Videos</div>
+		<div style="margin-bottom: 5px;"></div>
+		{% for entry in related %}
+		{% spaceless %}
+		<div class="rlbox-left">
+			<span class="bibox videotumb-96">
+				<span class="ibox">
+					<a href="{% url pytube.videos.views.play id=entry.id %}" title="{{entry.title}}">
+						<img src="{{entry.thumbnail}}" alt="Loading..." title="{{entry.title}}" width="96" height="72" /><br />
+					</a>
+				</span>
+			<span class="video-time">{{entry.duration}}</span>
+			</span>
+		</div>
+		<div class="rlbox-right">
+				<a href="{% url pytube.videos.views.play id=entry.id %}" title="{{entry.title}}">
+					{% trunk entry.title 25 %}
+				</a><br />
+				<em>{% limits entry.author 15 %}</em>
+		</div>
+		{% endspaceless %}
+		{% endfor %}
 </div>
 {% endblock %}
 
 {% block submaincontainer %}
 <div class="grid_12 box box-shadow alpha row_5">
-	<p>
-		{{video.description}}
-	</p>
+	<p style="white-space: pre; font-size: 90%;">{{video.description}}</p>
 </div>
 {% endblock %}

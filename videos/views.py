@@ -7,13 +7,17 @@ from pytube.channels.models import getUserDict
 
 def play(request, id):
 	api = Api()
-	entry = getVideoDict(api.GetYouTubeVideoEntry(video_id=id))
-	author = getUserDict(api.GetYouTubeUserEntry(username=entry['author']))
+	video = getVideoDict(api.GetYouTubeVideoEntry(video_id=id))
+	author = getUserDict(api.GetYouTubeUserEntry(username=video['author']))
+	related = []
+	for entry in api.GetYouTubeRelatedVideoFeed(video_id=id).entry:
+		related.append(getVideoDict(entry))
 	return render_to_response(
 		"ytembed.html",
 		{
-			'video': entry,
-			'author': author
+			'video': video,
+			'author': author,
+			'related': related
 		},
 		context_instance=RequestContext(request)
 	)

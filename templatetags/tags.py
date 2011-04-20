@@ -31,3 +31,7 @@ def wrap(text, width=80):
 @register.simple_tag
 def trunk(text, length, ellipsis='...'):
 	return truncate(text, length, ellipsis).replace(' '+ellipsis, ellipsis)
+
+@register.simple_tag
+def limits(text, length):
+	return text[:length]
