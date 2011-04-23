@@ -36,8 +36,11 @@
 			{% ksep video.viewed %}
 		</div>
 	</div>
-	<div style="margin-left: 12px; margin-top: 1em;">
-		Here comes download/embed stuff
+	<div style="margin: 0 12px; margin-top: 1em; text-align: center;">
+		<hr style="margin: 1em 15px;" />
+		{% for format in flist %}
+			<a href="{% url pytube.videos.views.get id=video.id itag=format.itag %}" title="{{format.quality}}">{{format.name}}</a>&nbsp;
+		{% endfor %}
 	</div>
 </div>
 <div class="grid_4 omega box box-shadow row_18">

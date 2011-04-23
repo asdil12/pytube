@@ -14,5 +14,6 @@ urlpatterns = patterns('pytube.videos.views',
 	# Uncomment the next line to enable the admin:
 	# (r'^admin/', include(admin.site.urls)),
 	(r'/(?P<id>.*)/get/(?P<itag>\d+)$', 'get'),
+	(r'/(?P<id>.*)/stream/(?P<itag>\d+)$', 'stream'),
 	(r'/(?P<id>.*)$', 'play'),
 )

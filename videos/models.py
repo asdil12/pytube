@@ -5,17 +5,17 @@ import cookielib, urllib2, json, re
 
 
 videoqls = {
-	5 : {'e': 'flv', 'm': 'x-flv', 't': '240p'},
-	13: {'e': '3gp', 'm': '3gpp', 't': '240p'},
-	17: {'e': 'mp4', 'm': 'mp4', 't': '240p'},
-	18: {'e': 'mp4', 'm': 'mp4', 't': 'medium'},
-	34: {'e': 'flv', 'm': 'x-flv', 't': '360p'},
-	35: {'e': 'flv', 'm': 'x-flv', 't': '480p'},
-	22: {'e': 'mp4', 'm': 'mp4', 't': '720p'},
-	37: {'e': 'mp4', 'm': 'mp4', 't': '1080p'},
-	38: {'e': 'video', 'm': 'x-unknown', 't': 'original'}, # You actually don't know if this will be MOV, AVI or whatever (maybe original video - high)
-	43: {'e': 'webm', 'm': 'webm', 't': 'medium'},
-	45: {'e': 'webm', 'm': 'webm', 't': '720p'},
+	5 : {'e': 'flv',	'm': 'x-flv',			't': '240p'},
+	13: {'e': '3gp',	'm': '3gpp',			't': '240p'},
+	17: {'e': 'mp4',	'm': 'mp4',				't': '240p'},
+	18: {'e': 'mp4',	'm': 'mp4',				't': 'medium'},
+	34: {'e': 'flv',	'm': 'x-flv',			't': '360p'},
+	35: {'e': 'flv',	'm': 'x-flv',			't': '480p'},
+	22: {'e': 'mp4',	'm': 'mp4',				't': '720p'},
+	37: {'e': 'mp4',	'm': 'mp4',				't': '1080p'},
+	38: {'e': 'video','m': 'x-unknown',	't': 'original'}, # You actually don't know if this will be MOV, AVI or whatever (maybe original video - high)
+	43: {'e': 'webm',	'm': 'webm',			't': 'medium'},
+	45: {'e': 'webm',	'm': 'webm',			't': '720p'},
 }
 
 def getVideoDict(entry):
