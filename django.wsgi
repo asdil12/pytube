@@ -10,4 +10,9 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'pytube.settings'
 import django.core.handlers.wsgi
 application = django.core.handlers.wsgi.WSGIHandler()
 
-# add "WSGIScriptAlias / /path/to/this/file/pytube/django.wsgi" to apache config
+
+
+# add this to apache config:
+# WSGIScriptAlias / /path/to/this/file/pytube/django.wsgi
+# WSGIDaemonProcess site-1 user=www-data group=www-data threads=25
+# WSGIProcessGroup site-1
