@@ -1,10 +1,8 @@
 from django.db import models
 from datetime import datetime
 from xml.utils.iso8601 import parse
-import locale
 import cookielib, urllib2, json, re
 
-locale.setlocale(locale.LC_ALL, "")
 
 videoqls = {
 	5 : {'e': 'flv', 't': '240p'},
@@ -53,10 +51,6 @@ def getVideoDict(entry):
 		viewed = entry.statistics.view_count,
 	except:
 		viewed = ""
-	try:
-		viewed_form = int(entry.statistics.view_count),
-	except:
-		viewed_form = 0
 
 	return {
 		'title': entry.media.title.text,
@@ -69,8 +63,7 @@ def getVideoDict(entry):
 		'duration': duration,
 		'id':	entry.id.text.split('/').pop(),
 		'published': published,
-		'viewed': viewed,
-		'viewed_formated': locale.format('%d', viewed_form, True)
+		'viewed': viewed
 	}
 
 def getVideoQs(vid):

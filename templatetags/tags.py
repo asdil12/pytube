@@ -1,5 +1,6 @@
 from django import template
 from icemac.truncatetext import truncate
+import locale
 
 register = template.Library()
 
@@ -35,3 +36,12 @@ def trunk(text, length, ellipsis='...'):
 @register.simple_tag
 def limits(text, length):
 	return text[:length]
+
+@register.simple_tag
+def ksep(num, enc="de_DE.UTF-8"):
+	try:
+		locale.setlocale(locale.LC_ALL, enc)
+		form = int(''.join(num))
+		return locale.format('%d', form, True)
+	except:
+		return ''.join(num)
