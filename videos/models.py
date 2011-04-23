@@ -5,17 +5,17 @@ import cookielib, urllib2, json, re
 
 
 videoqls = {
-	5 : {'e': 'flv', 't': '240p'},
-	13: {'e': '3gp', 't': '240p'},
-	17: {'e': 'mp4', 't': '240p'},
-	18: {'e': 'mp4', 't': 'medium'},
-	34: {'e': 'flv', 't': '360p'},
-	35: {'e': 'flv', 't': '480p'},
-	22: {'e': 'mp4', 't': '720p'},
-	37: {'e': 'mp4', 't': '1080p'},
-	38: {'e': 'video', 't': 'original'}, # You actually don't know if this will be MOV, AVI or whatever (maybe original video - high)
-	43: {'e': 'webm', 't': 'medium'},
-	45: {'e': 'webm', 't': '720p'},
+	5 : {'e': 'flv', 'm': 'x-flv', 't': '240p'},
+	13: {'e': '3gp', 'm': '3gpp', 't': '240p'},
+	17: {'e': 'mp4', 'm': 'mp4', 't': '240p'},
+	18: {'e': 'mp4', 'm': 'mp4', 't': 'medium'},
+	34: {'e': 'flv', 'm': 'x-flv', 't': '360p'},
+	35: {'e': 'flv', 'm': 'x-flv', 't': '480p'},
+	22: {'e': 'mp4', 'm': 'mp4', 't': '720p'},
+	37: {'e': 'mp4', 'm': 'mp4', 't': '1080p'},
+	38: {'e': 'video', 'm': 'x-unknown', 't': 'original'}, # You actually don't know if this will be MOV, AVI or whatever (maybe original video - high)
+	43: {'e': 'webm', 'm': 'webm', 't': 'medium'},
+	45: {'e': 'webm', 'm': 'webm', 't': '720p'},
 }
 
 def getVideoDict(entry):
@@ -130,3 +130,52 @@ def streamVideo(vid, itag):
 		# SIGHUP: Pipe closed
 		pass
 	return False
+
+class VidStream(object):
+	def __init__(self, vid, itag, block_size=1024):
+		self.vid = vid
+		self.itag = itag
+		self.block_size = block_size
+		cj = cookielib.CookieJar()
+		opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+		ck = cookielib.Cookie(version=0, name='PREF', value='f2=40000000', port=None, port_specified=False,
+													domain='youtube.com', domain_specified=True, domain_initial_dot=False, path='/',
+													path_specified=True, secure=False, expires=None, discard=True, comment=None,
+													comment_url=None, rest={'HttpOnly': None}, rfc2109=False)
+		cj.set_cookie(ck)
+		response = opener.open("http://www.youtube.com/watch?v=%s" % vid)
+		out = response.read()
+		jstr = re.search(r'\'PLAYER_CONFIG\':\s(?P<url_map>.+)\s}\);', out).group('url_map')
+		jenc = json.loads(jstr)
+
+		flist = {}
+		try:
+			for item in jenc['args']['fmt_url_map'].split(','):
+				it = item.split('|')
+				flist[int(it[0])] = it[1]
+		except KeyError:
+			pass
+		try:
+			for i in jenc['args']['html5_fmt_map']:
+				flist[int(i['itag'])] = i['url']
+		except KeyError:
+			pass
+
+		url = flist[itag]
+
+		# Do not include the Accept-Encoding header
+		headers = {'Youtubedl-no-compression': 'True'}
+		request = urllib2.Request(url, None, headers)
+
+		# Establish connection
+		self.data = opener.open(request)
+
+	def next(self):
+		data_block = self.data.read(self.block_size)
+		if len(data_block) == 0:
+			raise StopIteration
+		else:
+			return data_block
+
+	def __iter__(self):
+		return self

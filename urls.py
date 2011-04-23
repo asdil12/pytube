@@ -25,6 +25,6 @@ urlpatterns = patterns('',
 	(r'^login/process_token$', 'pytube.session.views.process_token'),
 	(r'^logout$', 'pytube.session.views.logout'),
 	(r'^$', direct_to_template, {'template': 'index.html'}),
-	(r'^subscriptions$', include('pytube.subscriptions.urls')),
-	(r'^video/(?P<id>.*)$', 'pytube.videos.views.play'),
+	(r'^subscriptions', include('pytube.subscriptions.urls')),
+	(r'^video', include('pytube.videos.urls')),
 )

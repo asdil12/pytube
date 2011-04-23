@@ -4,7 +4,7 @@ from django.conf.urls.defaults import *
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('pytube.subscriptions.views',
+urlpatterns = patterns('pytube.videos.views',
 	# Example:
 	# (r'^pytube/', include('pytube.foo.urls')),
 
@@ -13,6 +13,6 @@ urlpatterns = patterns('pytube.subscriptions.views',
 
 	# Uncomment the next line to enable the admin:
 	# (r'^admin/', include(admin.site.urls)),
-	(r'^$', 'get_subscriptions'),
-	(r'/manage$', 'manage'),
+	(r'/(?P<id>.*)/get/(?P<itag>\d+)$', 'get'),
+	(r'/(?P<id>.*)$', 'play'),
 )

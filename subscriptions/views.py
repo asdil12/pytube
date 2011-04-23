@@ -43,4 +43,4 @@ def get_subscriptions(request):
 		return redirect("/")
 
 def manage(request):
-	return
+	return HttpResponse('not implemented')
