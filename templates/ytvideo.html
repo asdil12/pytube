@@ -1,0 +1,5 @@
+{% extends "watch.html" %}
+
+{% block player %}
+<video src="{% url pytube.videos.views.stream id=video.id itag=format.itag %}" width=640" controls="controls" autoplay="autoplay" />
+{% endblock %}

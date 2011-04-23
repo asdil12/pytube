@@ -16,7 +16,8 @@ def play(request, id):
 	for entry in api.GetYouTubeRelatedVideoFeed(video_id=id).entry:
 		related.append(getVideoDict(entry))
 	flist = []
-	for itag in sorted(getVideoQs(id).iterkeys()):
+	itags = getVideoQs(id)
+	for itag in sorted(itags.iterkeys()):
 		qls = videoqls[itag]
 		flist.append({
 			'itag': itag,
@@ -24,15 +25,20 @@ def play(request, id):
 			'quality': qls['t']
 		})
 
-	print flist
+	vformat = flist[-1]
+	template = 'ytembed.html'
+
+	if flist[-1]['itag'] == 43 or  flist[-1]['itag'] == 45:
+		template = 'ytvideo.html'
 
 	return render_to_response(
-		"ytembed.html",
+		template,
 		{
 			'video': video,
 			'author': author,
 			'related': related,
-			'flist': flist
+			'flist': flist,
+			'format': vformat
 		},
 		context_instance=RequestContext(request)
 	)

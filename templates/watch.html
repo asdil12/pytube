@@ -26,12 +26,12 @@
 			<img src="{{author.thumbnail}}" width="64" alt="Loading..." />
 		</div>
 		<div style="display: inline-block; vertical-align: middle; padding: 0 2px; text-align: center;">
-			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/person.gif" alt="From" /><br />
-			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/calendar.gif" alt="Added" /><br />
-			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/bar-graph.gif" alt="Viewed" />
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/person.gif" alt="From" title="From" /><br />
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/calendar.gif" alt="Added" title="Added" /><br />
+			<img src="{{MEDIA_URL}}images/icons/pixelated-dark/bar-graph.gif" alt="Viewed" title="Viewd" />
 		</div>
 		<div style="display: inline-block; vertical-align: middle;">
-			{% limits author.name 17 %}<br />
+			<span title="{{author.name}}">{% limits author.name 13 %}</span><br />
 			{{video.published}}<br />
 			{% ksep video.viewed %}
 		</div>
