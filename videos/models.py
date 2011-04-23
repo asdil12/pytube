@@ -177,5 +177,9 @@ class VidStream(object):
 		else:
 			return data_block
 
+	def content_length(self):
+		return self.data.info()['Content-Length']
+
+
 	def __iter__(self):
 		return self

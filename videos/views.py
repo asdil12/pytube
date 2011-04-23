@@ -46,7 +46,10 @@ def play(request, id):
 @condition(etag_func=None)
 def stream(request, id, itag):
 	itag = int(itag)
-	return HttpResponse(VidStream(id, itag), mimetype="video/%s" % videoqls[itag]['m'])
+	vds = VidStream(id, itag)
+	response = HttpResponse(VidStream(id, itag), mimetype="video/%s" % videoqls[itag]['m'])
+	response['Content-Length'] = vds.content_length()
+	return response
 
 @condition(etag_func=None)
 def get(request, id, itag):
@@ -55,6 +58,8 @@ def get(request, id, itag):
 	name = video['title'].replace(' ', '_')
 	name = re.sub('[^-a-zA-Z0-9_.]+', '', name).replace('__', '_')
 	itag = int(itag)
-	response = HttpResponse(VidStream(id, itag), mimetype="video/%s" % videoqls[itag]['m'])
+	vds = VidStream(id, itag)
+	response = HttpResponse(vds, mimetype="video/%s" % videoqls[itag]['m'])
 	response['Content-Disposition'] = 'attachment; filename=%s.%s' % (name, videoqls[itag]['e'])
+	response['Content-Length'] = vds.content_length()
 	return response
