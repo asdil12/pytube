@@ -1,20 +1,13 @@
-# Create your views here.
 from django.contrib import messages
 from django.template import RequestContext
 from django.shortcuts import *
-
 from pytube.api.models import Api
-
 from django.http import HttpResponse
 from pytube.subscriptions.models import *
 from pytube.videos.models import getVideoDict
-
-
 import gdata.youtube
 import gdata.youtube.service
-
 import pp
-
 
 def get_subscriptions(request):
 	if 'token' in request.session:

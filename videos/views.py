@@ -6,7 +6,6 @@ from pytube.api.models import Api
 from pytube.videos.models import *
 from pytube.channels.models import getUserDict
 import re
-# Create your views here.
 
 def play(request, id):
 	api = Api()

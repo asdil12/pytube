@@ -1,12 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
-
 from django.contrib import messages
-
-
 from pytube.api.models import Api
-# Create your views here.
 
 def clearsession(session):
 	try:

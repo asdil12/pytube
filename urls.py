@@ -27,4 +27,5 @@ urlpatterns = patterns('',
 	(r'^$', direct_to_template, {'template': 'index.html'}),
 	(r'^subscriptions', include('pytube.subscriptions.urls')),
 	(r'^video', include('pytube.videos.urls')),
+	(r'^search', include('pytube.search.urls')),
 )
